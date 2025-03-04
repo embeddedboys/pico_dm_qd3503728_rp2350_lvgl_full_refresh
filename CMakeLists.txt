@@ -61,46 +61,20 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 # Set all global variables here
-set(OVERCLOCK_ENABLED 1)    # 1: enable, 0: disable
+set(OVERCLOCK_ENABLED 0)    # 1: enable, 0: disable
 
 if(OVERCLOCK_ENABLED)
 
     message(WARNING "Overclocking is enabled. This may damage your device. Use at own risk.")
 
     if(${PICO_BOARD} STREQUAL "pico" OR ${PICO_PLATFORM} STREQUAL "rp2040")
-        # Overclocking profiles
-        #      SYS_CLK  | FLASH_CLK | Voltage
-        #  1  | 240MHz  |  120MHZ   |  1.10(V) (default, stable, recommended for most devices)
-        #  2  | 266MHz  |  133MHz   |  1.10(V)
-        #  3  | 360MHz  |  90MHz    |  1.20(V)
-        #  4  | 400MHz  |  100MHz   |  1.30(V)
-        #  5  | 416MHz  |  104MHz   |  1.30(V)
-        set(OVERCLOCK_PROFILE 1)
-
-        if(OVERCLOCK_PROFILE EQUAL 1)
-            set(SYS_CLK_KHZ 240000)             # CPU clock speed
-            set(PERI_CLK_KHZ ${SYS_CLK_KHZ})    # Peripheral clock speed
-        elseif(OVERCLOCK_PROFILE EQUAL 2)
-            set(SYS_CLK_KHZ 266000)
-            set(PERI_CLK_KHZ ${SYS_CLK_KHZ})
-        elseif(OVERCLOCK_PROFILE EQUAL 3)
-            set(SYS_CLK_KHZ 360000)
-            set(PERI_CLK_KHZ ${SYS_CLK_KHZ})
-        elseif(OVERCLOCK_PROFILE EQUAL 4)
-            set(SYS_CLK_KHZ 400000)
-            set(PERI_CLK_KHZ ${SYS_CLK_KHZ})
-        elseif(OVERCLOCK_PROFILE EQUAL 5)
-            set(SYS_CLK_KHZ 416000)
-            set(PERI_CLK_KHZ ${SYS_CLK_KHZ})
-        else()
-            message(FATAL_ERROR "Invalid overclocking profile")
-        endif()
+        message(FATAL_ERROR "This demo does not support the pico board.")
     elseif(${PICO_BOARD} STREQUAL "pico2" OR ${PICO_PLATFORM} STREQUAL "rp2350")
         # Overclocking profiles
         #      SYS_CLK  | FLASH_CLK | Voltage
         #  1  | 366MHz  |  122MHz   |  1.20(V)
-        #  1  | 384MHz  |  128MHz   |  1.20(V)
-        set(OVERCLOCK_PROFILE 1)
+        #  2  | 384MHz  |  128MHz   |  1.20(V)
+        set(OVERCLOCK_PROFILE 2)
 
         if(OVERCLOCK_PROFILE EQUAL 1)
             set(SYS_CLK_KHZ 366000)             # CPU clock speed
@@ -117,8 +91,7 @@ else()  # OVERCLOCK_ENABLED
     message(WARNING "Overclocking is disabled.")
 
     if(${PICO_BOARD} STREQUAL "pico" OR ${PICO_PLATFORM} STREQUAL "rp2040")
-        set(SYS_CLK_KHZ 125000) # CPU clock speed
-        set(PERI_CLK_KHZ ${SYS_CLK_KHZ})    # Peripheral clock speed
+        message(FATAL_ERROR "This demo does not support the pico board.")
     elseif(${PICO_BOARD} STREQUAL "pico2" OR ${PICO_PLATFORM} STREQUAL "rp2350")
         set(SYS_CLK_KHZ 150000) # CPU clock speed
         set(PERI_CLK_KHZ ${SYS_CLK_KHZ})    # Peripheral clock speed
@@ -158,7 +131,7 @@ endif()
 
 # Display buffer size configuration
 if(${PICO_BOARD} STREQUAL "pico" OR ${PICO_PLATFORM} STREQUAL "rp2040")
-    math(EXPR MY_DISP_BUF_SIZE "${LCD_HOR_RES} * ${LCD_VER_RES} / 2")
+    message(FATAL_ERROR "This demo does not support the pico board.")
 elseif(${PICO_BOARD} STREQUAL "pico2" OR ${PICO_PLATFORM} STREQUAL "rp2350")
     math(EXPR MY_DISP_BUF_SIZE "${LCD_HOR_RES} * ${LCD_VER_RES}")
 endif()
@@ -228,11 +201,7 @@ target_compile_definitions(${PROJECT_NAME} PUBLIC MY_DISP_BUF_SIZE=${MY_DISP_BUF
 # maximum speed, because PICO_FLASH_SPI_CLKDIV must be even, So 4 is good for most purpose, Otherwise,
 # nothing should be done. These things will only useful when you overclocking the rp2040.
 if(${PICO_BOARD} STREQUAL "pico" OR ${PICO_PLATFORM} STREQUAL "rp2040")
-    if(${SYS_CLK_KHZ} GREATER 266000)
-        set(PICO_FLASH_SPI_CLKDIV 4)
-    else()
-        set(PICO_FLASH_SPI_CLKDIV 2)
-    endif()
+    message(FATAL_ERROR "This demo does not support the pico board.")
 elseif(${PICO_BOARD} STREQUAL  "pico2" OR ${PICO_PLATFORM} STREQUAL  "rp2350")
 	set(PICO_FLASH_SPI_CLKDIV 3)
 endif()
@@ -268,14 +237,7 @@ add_custom_target(
 
 # add a firmware flash target
 if(${PICO_BOARD} STREQUAL "pico" OR ${PICO_PLATFORM} STREQUAL "rp2040")
-	add_custom_target(
-	    flash
-	    COMMAND openocd -f interface/cmsis-dap.cfg -c "adapter speed 10000"
-			    -f target/rp2040.cfg -s tcl -c "program ${CMAKE_PROJECT_NAME}.elf verify reset exit"
-	    DEPENDS ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf
-	    COMMENT "Flashing firmware using CMSIS-DAP Debugger..."
-	    DEPENDS ${PROJECT_NAME}
-	)
+    message(FATAL_ERROR "This demo does not support the pico board.")
 elseif(${PICO_BOARD} STREQUAL  "pico2" OR ${PICO_PLATFORM} STREQUAL  "rp2350")
 	add_custom_target(
 	    flash

@@ -89,6 +89,11 @@ void __time_critical_func(i80_write_buf_rs)(void *buf, size_t len, bool rs)
     i80_write_pio16_wr(g_pio, g_sm, buf, len);
 }
 
+void __time_critical_func(i80_write_buf)(void *buf, size_t len)
+{
+    i80_write_pio16_wr(g_pio, g_sm, buf, len);
+}
+
 int i80_pio_init(uint8_t db_base, uint8_t db_count, uint8_t pin_wr)
 {
     printf("i80 PIO initialzing...\n");
