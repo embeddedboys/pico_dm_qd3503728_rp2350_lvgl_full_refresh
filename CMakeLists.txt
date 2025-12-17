@@ -61,7 +61,7 @@ if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 
 # Set all global variables here
-set(OVERCLOCK_ENABLED 1)    # 1: enable, 0: disable
+set(OVERCLOCK_ENABLED 0)    # 1: enable, 0: disable
 
 if(OVERCLOCK_ENABLED)
 
@@ -74,7 +74,7 @@ if(OVERCLOCK_ENABLED)
 		#      SYS_CLK  | FLASH_CLK | Voltage
 		#  1  | 366MHz  |  122MHz   |  1.20(V)
 		#  2  | 384MHz  |  128MHz   |  1.20(V)
-		set(OVERCLOCK_PROFILE 2)
+		set(OVERCLOCK_PROFILE 1)
 
 		if(OVERCLOCK_PROFILE EQUAL 1)
 			set(SYS_CLK_KHZ 366000)             # CPU clock speed
