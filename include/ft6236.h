@@ -27,7 +27,7 @@
 
 #define FT6236_PIN_SCL  27
 #define FT6236_PIN_SDA  26
-#define FT6236_PIN_RST  18
+#define FT6236_PIN_RST  18 
 
 #define CT_MAX_TOUCH  5
 

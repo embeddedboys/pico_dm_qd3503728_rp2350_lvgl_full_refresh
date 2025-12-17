@@ -28,8 +28,8 @@ extern "C" {
  *      DEFINES
  *********************/
 
-#define MY_DISP_HOR_RES    ILI9488_X_RES
-#define MY_DISP_VER_RES    ILI9488_Y_RES
+#define MY_DISP_HOR_RES ILI9488_X_RES
+#define MY_DISP_VER_RES ILI9488_Y_RES
 
 /**********************
  *      TYPEDEFS
@@ -43,11 +43,11 @@ void lv_port_disp_init(void);
 
 /* Enable updating the screen (the flushing process) when disp_flush() is called by LVGL
  */
-// void disp_enable_update(void);
+void disp_enable_update(void);
 
 /* Disable updating the screen (the flushing process) when disp_flush() is called by LVGL
  */
-// void disp_disable_update(void);
+void disp_disable_update(void);
 
 /**********************
  *      MACROS
