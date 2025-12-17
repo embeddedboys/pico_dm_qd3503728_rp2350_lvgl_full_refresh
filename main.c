@@ -37,6 +37,7 @@
 #include "lvgl/lvgl.h"
 #include "lvgl/demos/lv_demos.h"
 #include "lvgl/examples/lv_examples.h"
+#include "lv_demos/lv_demos_ext.h"
 #include "porting/lv_port_disp_template.h"
 #include "porting/lv_port_indev_template.h"
 
@@ -80,14 +81,22 @@ int main(void)
 	lv_tick_set_cb(my_tick_get_cb);
 
 	printf("Starting demo\n");
-	lv_demo_widgets();
-	lv_demo_widgets_start_slideshow();
+	// lv_demo_widgets();
+	// lv_demo_widgets_start_slideshow();
 	// lv_demo_keypad_encoder();
 	// lv_demo_benchmark();
 	// lv_demo_render(5, 100);
 	// lv_demo_stress();
 	// lv_demo_music();
-
+	
+	/* Demos from lvgl/lv_demos */
+	// lv_demo_flex_layout();
+	// lv_demo_multilang();
+	// lv_demo_transform();
+	// lv_demo_scroll();
+	lv_demo_ebike();
+	// lv_demo_smartwatch();
+	
 	// struct repeating_timer timer;
 	// add_repeating_timer_ms(1, lv_tick_timer_callback, NULL, &timer);
 

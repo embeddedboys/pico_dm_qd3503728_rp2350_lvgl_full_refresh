@@ -140,6 +140,7 @@ include_directories(./ include)
 
 # add lvgl library here
 add_subdirectory(lvgl)
+add_subdirectory(lv_demos)
 
 # include PIO library here
 add_subdirectory(pio)
@@ -172,6 +173,7 @@ target_link_libraries(${PROJECT_NAME}
 	hardware_i2c
 	pio_i80
 	lvgl lvgl::demos lvgl::examples
+	lv_demos_ext
 )
 target_include_directories(${PROJECT_NAME} PUBLIC .)
 

@@ -69,7 +69,7 @@
 
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     /** Size of memory available for `lv_malloc()` in bytes (>= 2kB) */
-    #define LV_MEM_SIZE (64 * 1024U)          /**< [bytes] */
+    #define LV_MEM_SIZE (128 * 1024U)          /**< [bytes] */
 
     /** Size of the memory expand for `lv_malloc()` in bytes */
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -608,7 +608,7 @@
 #define LV_FONT_MONTSERRAT_12 1
 #define LV_FONT_MONTSERRAT_14 1
 #define LV_FONT_MONTSERRAT_16 1
-#define LV_FONT_MONTSERRAT_18 0
+#define LV_FONT_MONTSERRAT_18 1
 #define LV_FONT_MONTSERRAT_20 1
 #define LV_FONT_MONTSERRAT_22 0
 #define LV_FONT_MONTSERRAT_24 1
@@ -652,7 +652,7 @@
 /** Enable handling large font and/or fonts with a lot of characters.
  *  The limit depends on the font size, font face and bpp.
  *  A compiler error will be triggered if a font needs it. */
-#define LV_FONT_FMT_TXT_LARGE 0
+#define LV_FONT_FMT_TXT_LARGE 1
 
 /** Enables/disables support for compressed fonts. */
 #define LV_USE_FONT_COMPRESSED 0
@@ -690,7 +690,7 @@
 /** Support bidirectional text. Allows mixing Left-to-Right and Right-to-Left text.
  *  The direction will be processed according to the Unicode Bidirectional Algorithm:
  *  https://www.w3.org/International/articles/inline-bidi-markup/uba-basics */
-#define LV_USE_BIDI 0
+#define LV_USE_BIDI 1
 #if LV_USE_BIDI
     /*Set the default direction. Supported values:
     *`LV_BASE_DIR_LTR` Left-to-Right
@@ -701,7 +701,7 @@
 
 /** Enable Arabic/Persian processing
  *  In these languages characters should be replaced with another form based on their position in the text */
-#define LV_USE_ARABIC_PERSIAN_CHARS 0
+#define LV_USE_ARABIC_PERSIAN_CHARS 1
 
 /*The control character to use for signaling text recoloring*/
 #define LV_TXT_COLOR_CMD "#"
@@ -1143,7 +1143,7 @@
 #define LV_USE_FRAGMENT 0
 
 /** 1: Support using images as font in label or span widgets */
-#define LV_USE_IMGFONT 0
+#define LV_USE_IMGFONT 1
 
 /** 1: Enable an observer pattern implementation */
 #define LV_USE_OBSERVER 1
@@ -1444,19 +1444,19 @@
       ---------------------------*/
 
     /** Flex layout demo */
-    #define LV_USE_DEMO_FLEX_LAYOUT     0
+    #define LV_USE_DEMO_FLEX_LAYOUT     1
 
     /** Smart-phone like multi-language demo */
-    #define LV_USE_DEMO_MULTILANG       0
+    #define LV_USE_DEMO_MULTILANG       1
 
     /** Widget transformation demo */
-    #define LV_USE_DEMO_TRANSFORM       0
+    #define LV_USE_DEMO_TRANSFORM       1
 
     /** Demonstrate scroll settings */
-    #define LV_USE_DEMO_SCROLL          0
+    #define LV_USE_DEMO_SCROLL          1
 
     /*E-bike demo with Lottie animations (if LV_USE_LOTTIE is enabled)*/
-    #define LV_USE_DEMO_EBIKE           0
+    #define LV_USE_DEMO_EBIKE           1
     #if LV_USE_DEMO_EBIKE
         #define LV_DEMO_EBIKE_PORTRAIT  0    /*0: for 480x270..480x320, 1: for 480x800..720x1280*/
     #endif
@@ -1465,7 +1465,7 @@
     #define LV_USE_DEMO_HIGH_RES        0
 
     /* Smart watch demo */
-    #define LV_USE_DEMO_SMARTWATCH      0
+    #define LV_USE_DEMO_SMARTWATCH      1
 #endif /* LV_BUILD_DEMOS */
 
 /*--END OF LV_CONF_H--*/

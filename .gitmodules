@@ -2,3 +2,6 @@
 	path = lvgl
 	url = https://gitee.com/embeddedboys/lvgl.git
 	branch = release/v8.4
+[submodule "lv_demos"]
+	path = lv_demos
+	url = https://gitee.com/embeddedboys/lv_demos
